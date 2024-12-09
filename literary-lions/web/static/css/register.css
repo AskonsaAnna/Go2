@@ -1,0 +1,177 @@
+/* Основные стили для всей страницы */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color:  #031b37eb;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.registration-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 1000px;
+    width: 100%;
+    padding: 20px;
+    margin: 20px;
+}
+
+.form-image-container {
+    flex: 1;
+    padding: 40px;
+}
+
+.registration-form {
+    max-width: 400px;
+    margin: auto;
+}
+
+.registration-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #0a305bd6;
+    font-size: 2rem;
+}
+
+.registration-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.registration-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+}
+
+.registration-form input:focus {
+    outline: none;
+    border-color: #4A90E2;
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
+}
+
+.registration-form button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background-color: #4A90E2;
+    color: white;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.registration-form button:hover {
+    background-color: #357ABD;
+}
+
+.registration-form p {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.registration-form a {
+    color: #2986f2;
+    text-decoration: none;
+}
+
+.registration-form a:hover {
+    text-decoration: underline;
+}
+
+.home-link {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+/* Стили для изображения */
+.registration-image {
+    flex: 1;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.registration-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Модальное окно для отображения ошибок */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 300px;
+    text-align: center;
+}
+
+.close {
+    color: #aaa;
+    font-size: 24px;
+    float: right;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #333;
+}
+
+#modalMessage {
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+/* Адаптивные стили */
+@media (min-width: 768px) {
+    .registration-container {
+        flex-direction: row;
+        padding: 40px;
+    }
+
+    .registration-image {
+        display: flex;
+    }
+}
+
+@media (max-width: 767px) {
+    .registration-container {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .registration-image {
+        display: none;
+    }
+}

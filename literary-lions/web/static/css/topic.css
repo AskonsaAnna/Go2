@@ -1,0 +1,322 @@
+/* General reset and body styles */
+
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    /* background: url('/static/image/lions7.jpg') no-repeat center center fixed; */
+    background: url('/static/image/lions4.jpg') no-repeat center fixed;
+    background-position: center calc(100% - 20%);
+    /* background: url('/static/image/lion_glowing2.jpg') no-repeat center center fixed; */
+    background-size: cover;
+}
+
+/* Wrapper for all content */
+.content-wrapper {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.styled-button {
+    
+    left: 5%;
+    background-color: #e4dab2;
+    /* Зеленый цвет фона */
+    border: none;
+    /* Убираем границу */
+    color: rgb(39, 15, 138);
+    /* Белый цвет текста */
+    padding:9px 20px;
+    /* Внутренние отступы */
+    text-align: center;
+    /* Текст по центру */
+    text-decoration: none;
+    /* Убираем подчеркивание */
+    display: inline-block;
+    /* Блочный элемент */
+    font-size: 16px;
+    /* Размер шрифта */
+    font-family: 'Arial', sans-serif;
+    /* Шрифт кнопки */
+    margin: 4px 2px;
+    /* Отступы */
+    cursor: pointer;
+    /* Курсор при наведении */
+    border-radius: 12px;
+    /* Закругленные углы */
+    box-shadow: 0 4px #999;
+    /* Тень для кнопки */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    /* Плавный переход для фона и тени */
+}
+
+.styled-button:hover {
+    background-color: #b3d4ef;
+    /* Цвет фона при наведении */
+    box-shadow: 0 6px #777;
+    /* Изменение тени при наведении */
+}
+
+.styled-button:active {
+    background-color: #618e3e76;
+    /* Цвет фона при нажатии */
+    box-shadow: 0 2px #666;
+    /* Уменьшенная тень при нажатии */
+    transform: translateY(2px);
+    /* Легкий сдвиг кнопки вниз при нажатии */
+}
+
+/* Static header with a fixed menu */
+.header {
+    width: 85%;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 10;
+    z-index: 1000;
+    padding: 5px 10px;
+    opacity: 0.87;
+}
+
+/* Container for the title and content */
+.header-title {
+    text-align: center;
+    margin-bottom: 5px;
+    background-color: rgb(49, 49, 43);
+    /* Space between title and content */
+}
+
+.header-title h1 {
+    color: rgba(221, 192, 65, 0.803);
+    /* Yellow text color */
+
+    padding: 10px;
+    display: inline-block;
+    border-radius: 5px;
+    font-size: 2rem;
+    /* Adjust the size as needed */
+    font-weight: bold;
+}
+
+/* Flexbox for aligning header content */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+}
+
+/* Menu styles */
+.menu {
+    flex: 1;
+
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: left;
+}
+
+.menu ul li {
+    margin: 0 10px;
+}
+
+.menu ul li a {
+    border-top: 3px solid transparent !important;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.border-aqua {
+    border-top-color: aqua;
+}
+
+.border-coral {
+    border-top-color: coral;
+}
+
+.border-lime {
+    border-top-color: lime;
+}
+
+.border-magenta {
+    border-top-color: magenta;
+}
+
+.border-yellow {
+    border-top-color: yellow;
+}
+
+/* Search form styles */
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+.search-form input[type="text"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.search-btn {
+    background-color: rgba(221, 192, 65, 0.749);
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-btn img {
+    height: 20px;
+    width: auto;
+}
+
+.login {
+    margin-right: 5%;
+    font-size: 10px;
+    align-items: center;
+}
+
+.login-btn {
+    border: #007bff;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-btn img {
+    height: 30px;
+    width: auto;
+}
+
+/* Menu button styles */
+.menu_btn {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+
+/* Main content area */
+main {
+    margin-top: 200px;
+    /* Make space for the fixed header */
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+    opacity: 0.9;
+}
+
+/* Styles for buttons and links */
+.link-button {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.link-button:hover {
+    text-decoration: underline;
+}
+
+.newpost {
+    padding: 10px;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+#posti {
+    width: 50em;
+    /* Set the width of the textarea */
+    min-height: 140px;
+    /* Set the minimum height of the textarea */
+    padding: 10px;
+    /* Add some padding inside the textarea */
+    font-size: 16px;
+    /* Set the font size */
+    border: 1px solid #ccc;
+    /* Add a border */
+    border-radius: 5px;
+    /* Round the corners */
+    resize: vertical;
+    /* Allow the user to manually resize the height */
+    overflow: hidden;
+    /* Hide scrollbars when not needed */
+    box-sizing: border-box;
+    /* Include padding and border in the width */
+}
+
+/* Set a maximum height */
+#posti {
+    max-height: 600px;
+    /* Set the maximum height of the textarea */
+}
+
+tr:nth-child(odd) {
+    background-color: rgba(242, 242, 242, 0.9);
+    /* Светло-серый с 50% прозрачностью */
+}
+
+tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.9);
+    /* Белый с 50% прозрачностью */
+}
+
+
+table thead th {
+    padding: 15px;
+    text-align: left;
+
+    /* Современный шрифт */
+    font-weight: bold;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgba(255, 245, 235, 0.4);
+    /* Лёгкий бежевый фон */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Тень для объёма */
+    border-radius: 10px;
+    overflow: hidden;
+    /* Убираем острые края */
+    margin-bottom: 20px;
+    /* Отступ снизу */
+}
+
+/* Заголовок таблицы */
+table thead {
+    background-color: #e88e17;
+    /* Золотой цвет для заголовка */
+    color: rgb(21, 20, 20);
+
+    letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+    table {
+        width: 100%;
+        font-size: 12px;
+    }
+
+    table thead th,
+    table tbody td {
+        padding: 10px;
+    }
+}

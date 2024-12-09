@@ -1,0 +1,189 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Literary Lions</title>
+    
+    <link rel="stylesheet" href="/static/css/profile.css" />
+    <link rel="stylesheet" href="/static/css/haha.css" />
+    <link rel="stylesheet" href="/static/css/footer.css" />
+ 
+
+</head>
+
+<body>
+    <div class="content-wrapper">
+
+        <header class="header">
+
+            <div class="header-title">
+                <h1>{{ .Username }} profile</h1>
+            </div>
+
+            <div class="header-content">
+
+
+
+                <div class="menu">
+                    <ul>
+                        <li><a href="/" class="border-aqua">HOME</a></li>
+                        <li><a href="/topic" class="border-aqua">FORUM</a></li>
+                        <li><a class="link-button" href="/topic?filter=user">MY POSTS</a></li>
+                        <li><a class="link-button" href="/topic?filter=like">LIKED POSTS</a></li>
+                    </ul>
+                </div>
+
+                <div class="userinfo">
+
+                    {{ if .Username}}
+                    <p>{{ .Username }}</p>
+
+                    {{ else }}
+                    <p>Not logged in</p>
+
+                    {{end}}
+
+                </div>
+
+                <div class="login">
+                    {{ if .Username}}
+                    <form action="/gotoprofile" method="POST">
+                        <button type="submit" class="login-btn">
+                            <img src="/static/image/lion_profile.jpg" alt="login">
+
+                        </button>
+                    </form>
+
+                    {{ else }}
+                    <form action="/gotoregister" method="POST">
+                        <button type="submit" class="login-btn">
+                            <img src="/static/image/lion_profile.jpg" alt="login">
+                            <!-- <p><b>User</b></p> -->
+
+                        </button>
+                    </form>
+                    {{end}}
+                </div>
+
+                {{ if .Username}}
+                <div class="login">
+                    <form action="/logout" method="POST">
+                        <button type="submit" class="login-btn">
+                            <img src="/static/image/logout.png" alt="login">
+                            <!-- <p><b>User</b></p> -->
+
+                        </button>
+                    </form>
+                </div>
+                {{ end }}
+
+
+
+            </div>
+        </header>
+
+
+
+        <main>
+            <div class="scrollable-container">
+                <div class="card">
+                    <div class="card-item">
+                        <h2 style="display: block; text-align: center;">{{ .Username }}</h2>
+
+                        <table class="profiletable">
+                            <tr class="profiletable">
+                                <td class="text">Username:</td>
+                                <td style="padding: 10px;">
+                                    <p id="username" name="username" class="highlight" style="margin: 0;">{{ .Username
+                                        }}</p>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr class="profiletable">
+                                <td class="text">Email:</td>
+                                <td style="padding: 10px;">
+                                    {{if .EditEmail}}
+
+                                    {{if .EmailError}}
+                                        <span class="error-message">{{ .EmailError }}</span>
+                                    {{end}}
+
+                                    <form method="POST" action="/update_email"
+                                        style="display: inline-block; width: 100%;">
+                                        
+                                        <input type="email" id="email" name="email" style="width: 70%;" required>
+                                        <button type="submit" style="margin-left: 10px;">Save</button>
+                                    </form>
+                                    <form method="POST" action="/gotoprofile" style="display: inline-block;">
+                                        <input type="hidden" name="edit_email" value="false">
+                                        <button type="submit" style="margin-left: 10px;">Cancel</button>
+                                    </form>
+                                    {{else}}
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <p id="email" name="email" style="margin: 0; width: 70%;">{{ .Email }}</p>
+                                        <form method="POST" action="/gotoprofile" style="margin-left: auto;">
+                                            <input type="hidden" name="edit_email" value="true">
+                                            <button type="submit">Edit</button>
+                                        </form>
+                                    </div>
+                                    {{end}}
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr class="profiletable">
+                                <td class="text">Password:</td>
+                                <td style="padding: 10px;">
+                                    {{if .EditPassword}}
+                                    <form method="POST" action="/update_password" style="width: 100%;">
+                                        
+                                        {{if .PasswordError}}
+                                            <span class="error-message">{{ .PasswordError }}</span>
+                                        {{end}}
+
+                                        <div style="margin-bottom: 10px;">
+                                            <label for="current_password">Current password:</label>
+                                            <input type="password" id="current_password" name="current_password"
+                                                style="width: 100%;" required>
+                                        </div>
+                                        <div style="margin-bottom: 10px;">
+                                            <label for="new_password">New password:</label>
+                                            <input type="password" id="new_password" name="new_password"
+                                                style="width: 100%;" required minlength="6" pattern=".*\S.*" title="Input cannot be empty or just spaces">
+                                        </div>
+                                        <div style="margin-bottom: 10px;">
+                                            <label for="confirm_password">Confirm password:</label>
+                                            <input type="password" id="confirm_password" name="confirm_password"
+                                                style="width: 100%;" required>
+                                        </div>
+                                        <button type="submit" style="margin-top: 10px;">Save</button>
+                                    </form>
+                                    <form method="POST" action="/gotoprofile" style="display: inline-block;">
+                                        <input type="hidden" name="edit_password" value="false">
+                                        <button type="submit" style="margin-left: 10px;">Cancel</button>
+                                    </form>
+                                    {{else}}
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <p>Password: </p>
+                                        <form method="POST" action="/gotoprofile" style="margin-left: auto;">
+                                            <input type="hidden" name="edit_password" value="true">
+                                            <button type="submit">Edit</button>
+                                        </form>
+                                    </div>
+                                    {{end}}
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+
+    </div>
+</body>
+
+{{block "footer" .}}{{end}}
+
+</html>

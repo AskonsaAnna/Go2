@@ -1,0 +1,424 @@
+/* Wrapper for all content */
+.content-wrapper {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Static header with a fixed menu */
+.header {
+    width: 85%;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 10;
+    z-index: 1000;
+    padding: 5px 10px;
+    opacity: 0.87;
+}
+
+/* Container for the title and content */
+.header-title {
+    text-align: center;
+    margin-bottom: 5px;
+    background-color: rgb(49, 49, 43);
+    /* Space between title and content */
+}
+
+/* Стили для контейнера */
+.text-container {
+    display: block;
+    width: 100%;
+    /* Используем всю ширину */
+}
+
+/* Стили для карточки */
+
+.lalala {
+    background-color: none;
+    border-radius: 10px;
+    width: 100%;
+    /* Используем всю ширину */
+    max-width: none;
+    /* Убираем ограничение по ширине */
+}
+
+/* Стили для текста */
+.lalala-item {
+    display: flex;
+    background-color: none;
+    box-sizing: border-box;
+    margin: 8%;
+    /* border-radius: 15px; */
+    /* Округление углов */
+    overflow: hidden;
+    border: none;
+    /* Установите это свойство для удаления границ */
+    text-align: center;
+}
+
+.lalala-item {
+    display: flex;
+    flex-direction: column;
+    color: #FFFFFF;
+    /* Белый цвет текста */
+    margin-left: 0%;
+    margin-right: 30%;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    /* Чёрная тень */
+}
+
+
+.header-title h1 {
+    font-family: "Lucida Handwriting", "Segoe Script", cursive;
+    color: rgba(221, 192, 65, 0.803);
+    /* Yellow text color */
+
+    padding: 10px;
+    display: inline-block;
+    border-radius: 5px;
+    font-size: 2rem;
+    /* Adjust the size as needed */
+    font-weight: bold;
+}
+
+/* Flexbox for aligning header content */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+}
+
+/* Menu styles */
+.menu {
+    flex: 1;
+
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: left;
+}
+
+.menu ul li {
+    margin: 0 10px;
+}
+
+.menu ul li a {
+    border-top: 3px solid transparent !important;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.border-aqua {
+    border-top-color: aqua;
+}
+
+.border-coral {
+    border-top-color: coral;
+}
+
+.border-lime {
+    border-top-color: lime;
+}
+
+.border-magenta {
+    border-top-color: magenta;
+}
+
+.border-yellow {
+    border-top-color: yellow;
+}
+
+/* Search form styles */
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+.search-form input[type="text"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-left: 5%;
+}
+
+.search-btn {
+    background-color: rgba(221, 192, 65, 0.749);
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-btn img {
+    height: 20px;
+    width: auto;
+}
+
+.userinfo {
+    margin-right: 10px;
+}
+
+.login {
+    /* margin-right: 5%; */
+    font-size: 10px;
+    align-items: center;
+}
+
+.login-btn {
+    border: #007bff;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-btn img {
+    height: 30px;
+    width: auto;
+}
+
+/* Menu button styles */
+.menu_btn {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+
+/* Main content area */
+main {
+    margin-top: 150px;
+    /* Make space for the fixed header */
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+}
+
+/* Styles for buttons and links */
+.link-button {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.link-button:hover {
+    text-decoration: underline;
+}
+
+/* Скрываем мобильное меню по умолчанию */
+.mobile-menu {
+    display: none;
+}
+
+/* Гамбургер-кнопка видна только на мобильных устройствах */
+.hamburger-btn {
+    display: none;
+}
+
+.cat-card:hover {
+    transform: scale(1.05);
+}
+
+.cat-section {
+    flex: 0 0 100px;
+    /* Фиксированная ширина секции с карточками */
+
+    margin-left: 0%;
+    margin-right: 15%;
+    /* Отступ справа для отделения от основного текста */
+}
+
+/* Container for category and post cards */
+.cat-cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 3fr);
+    /* Три колонки одинаковой ширины */
+    grid-gap: 15px;
+    /* Отступы между карточками */
+    margin-top: 6px;
+    max-width: 80%;
+}
+
+.cat-card {
+
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+    /* Change cursor to pointer to indicate clickability */
+}
+
+
+.cat-card-text {
+    background: white;
+    width: auto;
+    padding: 10px;
+    border-radius: 10px;
+
+}
+
+
+.cat-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    /* Ensure the link behaves as a block element */
+    flex: 1 1 calc(33.333% - 15px);
+    /* Adjust to fit 3 cards per row with gap */
+    box-sizing: border-box;
+    /* Include padding and border in the element's total width and height */
+}
+
+.cat-card a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.cat-card h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+
+.indexback {
+    --s: 150px;
+    /* control the size*/
+    --c2: #9c8c92;
+    --c1: #bbc0299e;
+
+    --_g: radial-gradient(#0000 60%, var(--c1) 61% 63%, #0000 64% 77%, var(--c1) 78% 80%, #0000 81%);
+    --_c: , #0000 75%, var(--c2) 0;
+    background:
+        conic-gradient(at 12% 20% var(--_c)) calc(var(--s)* .44) calc(.9*var(--s)),
+        conic-gradient(at 12% 20% var(--_c)) calc(var(--s)*-.06) calc(.4*var(--s)),
+        conic-gradient(at 20% 12% var(--_c)) calc(.9*var(--s)) calc(var(--s)* .44),
+        conic-gradient(at 20% 12% var(--_c)) calc(.4*var(--s)) calc(var(--s)*-.06),
+        var(--_g), var(--_g) calc(var(--s)/2) calc(var(--s)/2) var(--c2);
+    background-size: var(--s) var(--s);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    /* Левая колонка занимает 3/4, правая 1/4 */
+    gap: 10px;
+    background-color: none;
+    padding: 10px;
+}
+
+.item2 {
+    grid-area: main;
+}
+
+.item4 {
+    grid-area: right;
+}
+
+.item2 {
+    grid-column: 1 / span 1;
+    /* Левая колонка */
+}
+
+.item4 {
+    grid-column: 2 / span 1;
+    /* Правая колонка */
+}
+
+.lalala {
+    width: 100%;
+    max-width: none;
+    /* Чтобы не ограничивать ширину */
+}
+
+/* Медиа-запрос для мобильных экранов (до 768px) */
+@media (max-width: 768px) {
+    .hamburger-btn {
+        display: block;
+        /* Показываем кнопку гамбургер-меню */
+        background-color: transparent;
+        border: none;
+    }
+
+    .menu {
+        display: none;
+        /* Скрываем основное меню */
+    }
+
+    grid-container {
+        align-items: center;
+    }
+
+    .cat-cards-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        /* Одна колонка */
+        grid-gap: 10px;
+        margin-left: 27%;
+        /* Отступы между карточками */
+        max-width: 60%;
+    }
+
+    .cat-card-text {
+        background: white;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .cat-card h3 {
+        margin: 0;
+        font-size: 1rem;
+        /* Уменьшение размера заголовка */
+        font-weight: bold;
+        color: #333;
+    }
+
+    .cat-card p {
+        font-size: 0.9rem;
+        /* Уменьшение размера текста внутри карточки */
+        color: #555;
+    }
+
+    .item2 {
+        grid-column: 1 / -1;
+        /* Занимает всю ширину */
+    }
+
+    .item4 {
+        grid-column: none;
+        /* Занимает всю ширину */
+    }
+
+    .item4 {
+        display: none;
+    }
+
+    .lalala-item {
+        display: flex;
+        flex-direction: column;
+        color: #FFFFFF;
+        /* Белый цвет текста */
+        margin-left: 20%;
+        margin-right: 20%;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        /* Чёрная тень */
+    }
+
+}

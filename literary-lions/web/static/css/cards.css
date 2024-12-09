@@ -1,0 +1,37 @@
+.card-item {
+    display: flex;
+    background-color: none;
+    box-sizing: border-box;
+    margin: 8%;
+    /* border-radius: 15px; */
+    /* Округление углов */
+    overflow: hidden;
+    border: none;
+    /* Установите это свойство для удаления границ */
+    text-align: center;
+}
+
+.card-item {
+    display: flex;
+    flex-direction: column;
+    color: #FFFFFF;
+    /* Белый цвет текста */
+    margin-left: 25%;
+    margin-right: 25%;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    /* Чёрная тень */
+}
+
+.card-item strong,
+.card-item button {
+    display: flex;
+    margin-bottom: 10px;
+    /* Optional: adds some space between the rows */
+}
+
+.card-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Тень при наведении */
+    cursor: pointer;
+    transform: scale(1.1);
+}

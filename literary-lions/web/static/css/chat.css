@@ -1,0 +1,495 @@
+/* General reset and body styles */
+
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    /* background: url('/static/image/lions3.jpg') no-repeat center center fixed; */
+    background: url('/static/image/lions4.jpg') no-repeat center fixed;
+    background-position: center 15%;
+    background-size: cover;
+}
+
+.post-content {
+    background-color: rgb(249, 249, 234);
+    padding: 1%;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+#post-content {
+    background-color: rgba(218, 190, 124, 0.561);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+
+/* Стили для основного контента */
+main {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    /* border: 2px solid #000; */
+    /* Черная граница */
+    /* border-radius: 20px; */
+    /* Скругленные углы */
+    /* background-color: #f9f9f9; */
+    /* Светлый фон */
+    opacity: 0.95;
+}
+
+/* Стили для заголовка и контента поста */
+
+
+#post-content h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#post-content p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* Стили для секции с лайками и дизлайками */
+#likes {
+    display: flex;
+    justify-content: space-between;
+    width: 20%;
+    margin: 20px 0;
+}
+
+#likes button {
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Стили для комментариев */
+#comments {
+    margin-top: 30px;
+}
+
+#comments h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.comment {
+    background-color: #eaeaea;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+/* Стили для формы добавления комментария */
+#add-comment {
+    margin-top: 20px;
+    display: flex;
+}
+
+#add-comment textarea {
+    display: flex;
+    min-width: 200%;
+    min-height: 100px;
+    /* Задаем минимальную высоту */
+
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    resize: horizontal;
+}
+
+#add-comment button {
+    display: flex;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+.aaa {
+
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left {
+    flex-grow: 1;
+    text-align: left;
+    word-spacing: 40px;
+}
+
+.right {
+    flex-grow: 0;
+    text-align: right;
+}
+
+.form-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: aqua;
+    /* Отступ между кнопками */
+}
+
+.form-container form {
+    margin: 0;
+    padding: 0;
+}
+
+/* Медиа-запрос для уменьшения текста и изображений на мобильных устройствах */
+@media (max-width: 768px) {
+    #comments h3 {
+        padding-right: 30px;
+        font-size: 16px;
+        /* уменьшение шрифта на мобильных */
+    }
+
+    .comment p {
+        padding-right: 30px;
+        font-size: 12px;
+        /* уменьшение шрифта комментариев на мобильных */
+    }
+
+    .replies .reply p {
+        font-size: 10px;
+        /* уменьшение шрифта в реплаях на мобильных */
+    }
+
+    .replies {
+        padding-right: 30px;
+
+    }
+
+    .comment {
+
+        padding-right: 30px;
+    }
+
+    .form-container img {
+        width: 20px;
+        /* уменьшение изображений на мобильных */
+        height: 20px;
+    }
+
+    .form-container {
+
+        padding-right: 30px;
+
+    }
+
+    #post-content h2 {
+        padding-right: 30px;
+        font-size: 18px;
+        /* уменьшение шрифта заголовка на мобильных */
+
+    }
+
+    .hamburger-btn {
+        display: block;
+        /* Показываем кнопку гамбургер-меню */
+        background-color: transparent;
+        border: none;
+    }
+
+    #add-comment textarea {
+        display: flex;
+        min-width: 80%;
+        min-height: 60px;
+        /* Задаем минимальную высоту */
+
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        font-size: 12px;
+        resize: horizontal;
+    }
+
+    #add-comment button {
+        display: flex;
+        padding: 7px 15px;
+        font-size: 12px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    .menu {
+        display: none;
+        /* Скрываем основное меню */
+    }
+
+    .post-edit-button {
+        display: flex;
+        background-color: #eee;
+        border: 1px solid #ccc;
+        border-radius: none;
+        padding: 3px 5px;
+        font-size: 10px;
+        cursor: pointer;
+    }
+}
+
+
+.post-edit-checkbox {
+    display: none;
+}
+
+.post-edit-checkbox:checked~.modal3 {
+    display: flex;
+}
+
+.post-delete-checkbox {
+    display: none;
+}
+
+.post-delete-checkbox:checked~.modal2 {
+    display: flex;
+}
+
+/*edit button*/
+/* Hide the checkbox */
+.edit-checkbox {
+    display: none;
+}
+
+/* Initially hide the modal2 */
+.modal2 {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent background */
+    backdrop-filter: blur(3px);
+    align-items: center;
+    /* Center the modal vertically */
+    justify-content: center;
+    /* Center the modal horizontally */
+}
+
+/* Show the modal when checkbox is checked */
+.edit-checkbox:checked~.modal2 {
+    display: flex;
+}
+
+/* Modal2 content */
+.modal2-content {
+    z-index: 1000;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+/* Reply form styles */
+.edit-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-form h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.edit-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    resize: vertical;
+    height: 100px;
+}
+
+.edit-button-container {
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+    align-items: center;
+}
+
+.edit-button {
+
+    cursor: pointer;
+}
+
+.edit-button:hover {
+    color: #007bff;
+}
+
+.edit-form button {
+    background-color: #007bff;
+    color: rgb(43, 31, 31);
+    padding: 5px 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+
+}
+
+.edit-form button:hover {
+    background-color: #0056b3;
+    color: #f9f9f9;
+}
+
+/* post edit button*/
+/* Hide the checkbox */
+.post-edit-checkbox {
+    display: none;
+}
+
+/* Initially hide the modal3 */
+.modal3 {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent background */
+    backdrop-filter: blur(3px);
+    align-items: center;
+    /* Center the modal vertically */
+    justify-content: center;
+    /* Center the modal horizontally */
+}
+
+/* Show the modal3 when checkbox is checked */
+.post-edit-checkbox:checked~.modal3 {
+    display: flex;
+}
+
+/* Modal3 content */
+.modal3-content {
+    z-index: 1000;
+    background-color: rgb(215, 233, 242);
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+/* post edit form styles */
+.post-edit-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.post-edit-form h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #2e5b06;
+}
+
+.post-edit-form .post-edit-title-textarea {
+    width: 60%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #dfec97;
+    border-radius: 4px;
+    font-size: 1rem;
+    resize: vertical;
+    height: 50px;
+}
+
+.post-edit-form .post-edit-content-textarea {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    resize: vertical;
+    height: 100px;
+}
+
+.post-edit-button-container {
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+    align-items: center;
+    color: rgb(223, 25, 25);
+}
+
+.post-edit-button {
+
+    background-color: #eeeeee;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 3px 3px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.post-edit-button:hover {
+    color: #007bff;
+}
+
+.close-button {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+
+    font-size: 28px;
+    color: #333;
+    cursor: pointer;
+}
+
+.post-edit-form button {
+    background-color: #007bff;
+    color: rgb(11, 11, 11);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+
+}
+
+.post-edit-form button:hover {
+    background-color: #0056b3;
+    color: #4312d4;
+}
+
+@media (max-width: 600px) {
+    .modal3-content {
+        width: 55%;
+        /* Увеличение адаптивности для мобильных устройств */
+    }
+}

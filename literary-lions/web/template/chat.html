@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Details</title>
+   
+    <link rel="stylesheet" href="/static/css/chat.css">
+    <link rel="stylesheet" href="/static/css/haha.css" />
+    <link rel="stylesheet" href="/static/css/cards.css" />
+    <link rel="stylesheet" href="/static/css/comments.css" />
+    <link rel="stylesheet" href="/static/css/error.css" />
+    <link rel="stylesheet" href="/static/css/footer.css" />
+</head>
+
+<body>
+
+    <main>
+
+        <div class="form-container">
+            <div class="left">
+
+
+                <form action="/" method="POST" style="display: inline-block;">
+                    <button type="submit" class="login-btn">
+                        <img src="/static/image/home.png" alt="login">
+                    </button>
+                </form>
+
+                <form action="/topic" method="post" style="display: inline-block;">
+                    <button type="submit">
+                        <img src="/static/image/back.webp" alt="login" width="30" height="30">
+                    </button>
+                </form>
+
+
+
+            </div>
+
+
+            <div class="right">
+                <div class="userinfo" style="display: inline-block;">
+
+                    {{ if .ActiveUser}}
+                    <p>{{ .ActiveUser }}</p>
+
+                    {{ else }}
+                    <p>Not logged in</p>
+
+                    {{end}}
+
+                </div>
+
+
+
+                <div class="login" style="display: inline-block;">
+                    {{ if .ActiveUser}}
+                    <form action="/gotoprofile" method="POST">
+                        <button type="submit" class="login-btn">
+                            <img src="/static/image/login.jpg" alt="login">
+
+                        </button>
+                    </form>
+
+
+
+                    {{ else }}
+                    <form action="/gotoregister" method="POST">
+                        <button type="submit" class="login-btn">
+                            <input type="hidden" name="redirect" value="{{ .CurrentURL }}">
+                            <img src="/static/image/lion_profile.jpg" alt="login">
+                            <!-- <p><b>User</b></p> -->
+
+                        </button>
+                    </form>
+                    {{end}}
+                </div>
+
+                {{ if .ActiveUser}}
+                <div class="login" style="display: inline-block;">
+                    <form action="/logout" method="POST">
+                        <button type="submit" class="login-btn">
+                            <img src="/static/image/logout.png" alt="login">
+                            <!-- <p><b>User</b></p> -->
+
+                        </button>
+                    </form>
+                </div>
+                {{ end }}
+
+            </div>
+
+        </div>
+
+        <!-- Здесь будет отображение поста -->
+        <section id="post-content">
+
+            <!-- {{if .ErrorMessage }}
+                <span>{{ .ErrorMessage }}</span>
+            {{end}} -->
+
+            <div id="errorModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p id="modalMessage"></p>
+                </div>
+            </div>
+
+            {{ if .ErrorMessage }}
+            <script>
+                document.getElementById('modalMessage').textContent = "{{ .ErrorMessage }}";
+                var modal = document.getElementById("errorModal");
+                modal.style.display = "block";
+
+                var span = document.getElementsByClassName("close")[0];
+                span.onclick = function () {
+                    modal.style.display = "none";
+                }
+
+                window.onclick = function (event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+            </script>
+            {{ end }}
+
+            <!-- Загрузите контент поста по ID -->
+            <h2 class="aaa">
+                <span class="left">
+                    {{ .User }} {{ .Topic }}/{{ .Title }}
+                </span>
+                <span class="right">
+                    {{ .DateString }}
+                </span>
+            </h2>
+
+            <div class="post-content">
+                <p>{{ .Content }}</p>
+                <p style="text-align: right; font-style: italic; font-size: 0.8em;">{{if .EditedString }} edited:
+                    {{.EditedString}} {{end}}</p>
+            </div>
+        </section>
+
+        <!-- Лайки и дизлайки -->
+        <section id="likes">
+            <form action="/like" method="post" style="display: inline;">
+                <input type="hidden" name="id" value="{{ .ID }}"> <!-- Post ID here -->
+                <button type="submit">👍 {{ .Likes }}</button>
+            </form>
+            <form action="/dislike" method="post" style="display: inline;">
+                <input type="hidden" name="id" value="{{ .ID }}"> <!-- Post ID here -->
+                <button type="submit">👎 {{ .Dislikes }}</button>
+            </form>
+
+           <!-- Edit post section -->
+{{if and .MyPost (not .Deleted)}}
+
+<!-- edit post -->
+<label for="post-edit-toggle-{{.ID}}" class="post-edit-button">edit</label>
+<input type="checkbox" id="post-edit-toggle-{{.ID}}" class="post-edit-checkbox">
+
+<div class="modal3 edit-modal">
+    <div class="modal3-content post-edit-form">
+        <label for="post-edit-toggle-{{.ID}}" class="close-button">&times;</label>
+        <h3>Edit Post:</h3>
+        <form action="/edit_post" method="post">
+            <textarea class="post-edit-content-textarea" name="content" id="post-content"
+                required>{{ .Content}}</textarea>
+            <input type="hidden" name="id" value="{{ .ID }}"> <!-- Post ID here -->
+            <div class="post-edit-button-container"> <button type="submit">Edit</button></div>
+        </form>
+    </div>
+</div>
+
+<!-- delete post -->
+<label for="post-delete-toggle-{{.ID}}" class="post-edit-button">delete</label>
+<input type="checkbox" id="post-delete-toggle-{{.ID}}" class="post-delete-checkbox">
+
+<div class="modal2 delete-modal">
+    <div class="modal2-content post-edit-form">
+        <label for="post-delete-toggle-{{.ID}}" class="close-button">&times;</label>
+        <h3>Confirm deletion</h3>
+        <form action="/delete_post" method="post">
+            <input type="hidden" name="id" value="{{ .ID }}"> <!-- Post ID here -->
+            <div class="post-edit-button-container"> <button type="submit">delete</button></div>
+        </form>
+    </div>
+</div>
+
+{{end}}
+
+        </section>
+
+        <!-- Отображение комментариев -->
+        <section id="comments">
+           
+            {{ range .Comments }}
+            <div class="comment" id="comment-{{ .ID }}">
+                <p style="text-align: right;">{{ .DateString }} </p>
+                <p><strong>{{ .Username }}</strong>: {{ .Content }} </p>
+                <p style="text-align: right; font-style: italic; font-size: 0.8em;">{{if .EditedString }} edited:
+                    {{.EditedString}} {{end}}</p>
+            </div>
+
+            <!-- like/dislike and reply buttons for comment -->
+            <div>
+                <!-- like comment -->
+                <form action="/like" method="post" style="display: inline;">
+                    <input type="hidden" name="id" value="{{ .PostID }}"> <!-- Post ID here -->
+                    <input type="hidden" name="comment-id" value="{{ .ID }}">
+                    <button type="submit">👍 {{ .Likes }}</button>
+                </form>
+
+                <!-- dislike comment -->
+                <form action="/dislike" method="post" style="display: inline;">
+                    <input type="hidden" name="id" value="{{ .PostID }}">
+                    <input type="hidden" name="comment-id" value="{{ .ID }}">
+                    <button type="submit">👎 {{ .Dislikes }}</button>
+                </form>
+
+                {{if and .MyPost (not .Deleted)}}
+
+                <!-- edit comment -->
+                <label for="comment-edit-toggle-{{.ID}}" class="post-edit-button">edit</label>
+                <input type="checkbox" id="comment-edit-toggle-{{.ID}}" class="post-edit-checkbox">
+
+                <div class="modal3">
+                    <div class="modal3-content post-edit-form">
+
+                        <label for="comment-edit-toggle-{{.ID}}" class="close-button">&times;</label>
+                        <h3>Edit Comment:</h3>
+                        <form action="/edit_comment" method="post">
+                            <textarea class="post-edit-content-textarea" name="comment-content" id="comment-content"
+                                required>{{ .Content}}</textarea>
+                                <input type="hidden" name="id" value="{{ .PostID }}">
+                                <input type="hidden" name="comment-id" value="{{ .ID }}">
+                            <div class="post-edit-button-container"> <button type="submit">Edit</button></div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- delete comment -->
+                <label for="comment-delete-toggle-{{.ID}}" class="post-edit-button">delete</label>
+                <input type="checkbox" id="comment-delete-toggle-{{.ID}}" class="post-delete-checkbox">
+
+                <div class="modal2">
+                    <div class="modal2-content post-edit-form">
+
+                        <label for="comment-delete-toggle-{{.ID}}" class="close-button">&times;</label>
+                        <h3>Confirm deletion</h3>
+                        <form action="/delete_comment" method="post">
+                            <input type="hidden" name="id" value="{{ .PostID }}">
+                            <input type="hidden" name="comment-id" value="{{ .ID }}">
+                            <div class="post-edit-button-container"> <button type="submit">delete</button></div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- <form action="/delete_comment" method="post" style="display: inline;">
+                    <input type="hidden" name="id" value="{{ .PostID }}">
+                    <input type="hidden" name="comment-id" value="{{ .ID }}">
+                    <button type="submit">delete</button>
+                </form> -->
+
+                {{end}}
+
+                <button type="button" onclick="showReplyForm({{ .ID }})">Reply</button>
+                {{if .Replies}}
+                <button class="toggle-replies-btn" onclick="showReplies({{ .ID }})">Show all replies</button>
+
+                {{end}}
+            </div>
+
+            <!-- Reply form initially hidden -->
+            <div id="reply-form-{{ .ID }}" class="reply-form"
+                style="display: none; margin-top: 10px; margin-left: 20px;">
+                <!-- <form onsubmit="submitReply(event, {{ .ID }})"> -->
+                <form action="/reply" method="post" style="display: inline;">
+                    <input type="hidden" name="comment-id" value="{{ .ID }}">
+                    <input type="hidden" name="post-id" value="{{ .PostID }}">
+                    <input type="hidden" name="post_title" value="{{ .PostTitle }}">
+                    <textarea name="reply-content" rows="3" cols="40" placeholder="Write your reply..."
+                        required></textarea><br>
+                    <button type="submit">Submit Reply</button>
+                </form>
+            </div>
+
+            <!-- Replies -->
+            <div class="replies" id="replies-{{ .ID }}" style="display: none;">
+                {{ range .Replies }}
+                <div class="reply" style="margin-left: 20px;">
+                    <p style="text-align: right;">{{ .DateString}}</p>
+                    <p><strong>{{ .Username }}</strong>: {{ .Content }}</p>
+                </div>
+                {{ end }}
+            </div>
+
+            {{ end }}
+
+        </section>
+
+        <script>
+            function showReplyForm(commentId) {
+                var replyForm = document.getElementById('reply-form-' + commentId);
+                replyForm.style.display = (replyForm.style.display === 'none' || replyForm.style.display === '') ? 'block' : 'none';
+            }
+
+            function showReplies(commentId) {
+                var replyForm = document.getElementById('replies-' + commentId);
+                replyForm.style.display = (replyForm.style.display === 'none' || replyForm.style.display === '') ? 'block' : 'none';
+            }
+
+
+        </script>
+
+        <!-- Форма добавления комментария -->
+        <section id="add-comment">
+            <form action="/addcomment" method="POST">
+                <input type="hidden" name="post_id" value="{{ .ID }}">
+                <input type="hidden" name="post_title" value="{{ .Title }}">
+                <textarea name="comment" placeholder="Add your comment" required></textarea>
+                <button type="submit">Add Comment</button>
+            </form>
+        </section>
+
+
+    </main>
+
+</body>
+
+{{block "footer" .}}{{end}}
+
+</html>

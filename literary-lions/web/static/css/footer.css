@@ -1,0 +1,24 @@
+.lion-footer {
+    background-color: rgba(51, 51, 51, 0.5);
+    /* Dark background with 80% opacity */
+    color: white;
+    /* White text color */
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    /* margin-left: 25%; */
+    width: auto;
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: auto;
+    position: fixed;
+}
+
+@media (max-width:768px) {
+    .site-footer {
+        margin-left: 0;
+    }
+}

@@ -1,0 +1,225 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Literary Lions</title>
+   
+    <link rel="stylesheet" href="/static/css/haha.css" />
+    <link rel="stylesheet" href="/static/css/cards.css" />
+    <link rel="stylesheet" href="/static/css/comments.css" />
+    <link rel="stylesheet" href="/static/css/topic.css" />
+    <link rel="stylesheet" href="/static/css/newpost.css" />
+    <link rel="stylesheet" href="/static/css/footer.css" />
+</head>
+
+<body>
+    <div class="content-wrapper">
+
+        <header class="header">
+
+            <div class="header-title">
+                <h1>Forum</h1>
+            </div>
+
+            <div class="header-content">
+
+
+                <div class="login">
+                    <form action="/" method="POST">
+                        <button type="submit" class="login-btn">
+                            <img src="/static/image/home.png" alt="login">
+                        </button>
+                    </form>
+                </div>
+
+
+                <div class="menu">
+                    <ul>
+                        <li><a class="link-button" href="/topic?filter=latest">LATEST POSTS</a></li>
+                        <li><a class="link-button" href="/topic?filter=views">POPULAR POSTS</a></li>
+                        <li><a class="link-button" href="/topic?filter=user">MY POSTS</a></li>
+                        <li><a class="link-button" href="/topic?filter=like">LIKED POSTS</a></li>
+                    </ul>
+                </div>
+
+                <div class="userinfo">
+
+                    {{ if .Username}}
+                    <p>{{ .Username }}</p>
+
+                    {{ else }}
+                    <p>Not logged in</p>
+
+                    {{end}}
+
+                </div>
+
+                <div class="login">
+                    {{ if .Username}}
+                    <form action="/gotoprofile" method="POST">
+                        <button type="submit" class="login-btn">
+                            <img src="/static/image/lion_profile.jpg" alt="login">
+
+                        </button>
+                    </form>
+
+                    {{ else }}
+                    <form action="/gotoregister" method="POST">
+                        <input type="hidden" name="redirect" value="{{ .CurrentURL }}">
+                        <button type="submit" class="login-btn">
+                            <img src="/static/image/lion_profile.jpg" alt="login">
+                        </button>
+                    </form>
+                    {{end}}
+                </div>
+
+                {{ if .Username}}
+                <div class="login">
+                    <form action="/logout" method="POST">
+                        <button type="submit" class="login-btn">
+                            <img src="/static/image/logout.png" alt="login">
+                            <!-- <p><b>User</b></p> -->
+
+                        </button>
+                    </form>
+                </div>
+                {{ end }}
+
+
+                <form class="search-form" method="GET" action="/search">
+                    <input type="text" name="query" placeholder="Search..." required>
+                    <button type="submit" class="search-btn">
+                        <img src="/static/image/search.png" alt="Search">
+                    </button>
+                </form>
+            </div>
+        </header>
+
+        <main>
+
+            <button type="button" class="styled-button" onclick="window.location.href='/topic?form=new';">New
+                post</button>
+            <div class="scrollable-container">
+                <div class="asdf">
+                    {{ if ne .ShowPost false }}
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>
+                                    <form id="topicForm" method="GET" action="/topic">
+                                        <select id="topic" name="topic"
+                                            onchange="document.getElementById('topicForm').submit();">
+                                            <option value="">Topic</option>
+                                            <optgroup label="─────────────"></optgroup>
+                                            <option value="all">Show all</option>
+                                            {{ range .Topics }}
+                                            <option value="{{ . }}">{{ . }}</option>
+                                            {{ end }}
+                                        </select>
+                                    </form>
+                                </th>
+                                <th>Preview</th>
+                                <th>User</th>
+                                <th>Views</th>
+                                <th>Comments</th>
+                                <th>Date</th>
+
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {{ if .Posts }}
+                            {{ range .Posts }}
+                            <tr>
+                                <td><a href="http://localhost:8080/views?id={{ .ID }}">{{ .Title }}</a></td>
+                                <td>{{ .Topic }}</td>
+                                <td>{{ .Content }}</td>
+                                <td>{{ .User }}</td>
+                                <td>{{ .Views }}</td>
+                                <td>{{ .Count }}</td>
+                                <td>{{ .DateString }}</td>
+                            </tr>
+                            {{ end }}
+                            {{ else }}
+                            <tr>
+                                <td colspan="4">No posts to show...</td>
+                            </tr>
+                            {{ end }}
+                        </tbody>
+                    </table>
+
+                    {{ if .Results }}
+                    <h2>By the content of the comment</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Title of post</th>
+                                <th>Preview of comment</th>
+                                <th>User</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{ range .Results }}
+                            <tr>
+                                <td><a href="http://localhost:8080/views?id={{ .PostID}}">{{ .PostTitle }}</a></td>
+                                <td>{{ .Content }}</td>
+                                <td>{{ .Username }}</td>
+                                <td>{{ .DateString }}</td>
+                            </tr>
+                            {{ end }}
+                        </tbody>
+                    </table>
+                    {{ end }}
+
+                    {{else}}
+
+                    {{ if .ErrorMessage}}
+                    <span>{{.ErrorMessage}}</span>
+                    {{end}}
+
+                    <form action="/newpost" method="post">
+                        <div class="newpost">
+
+                            <div>
+                                <label for="title">Title:</label>
+                                <input type="text" id="title" name="title" required pattern=".*\S.*" title="Input cannot be empty or just spaces">
+                            </div>
+                            <div>
+                                <label for="topic">Choose the topic</label>
+                                <select id="topic" name="topic" required>
+                                    <option value=""></option>
+                                    {{ range .Topics }}
+                                    <option value="{{ . }}">{{ . }}</option>
+                                    {{ end }}
+                                </select>
+                            </div>
+                            <div>
+                                <label for="posti">Type your text:</label>
+                                <textarea id="posti" name="posti" required></textarea>
+                            </div>
+                            <div>
+                                <button type="submit">Create post</button>
+                               
+                            </div>
+                    </form>
+
+                    <form action="/topic" method="post">
+                        <button type="submit">Cancel</button>
+                    </form>
+                    
+                    {{end}}
+                </div>
+            </div>
+        </main>
+
+
+    </div>
+</body>
+
+{{block "footer" .}}{{end}}
+
+</html>

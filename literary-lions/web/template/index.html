@@ -1,0 +1,185 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Literary Lions</title>
+    <link rel="stylesheet" href="/static/css/main.css" />
+    <link rel="stylesheet" href="/static/css/haha.css" />
+    <link rel="stylesheet" href="/static/css/cards.css" />
+    <link rel="stylesheet" href="/static/css/menu.css" />
+    <link rel="stylesheet" href="/static/css/footer.css" />
+
+</head>
+
+<body>
+    <div class="content-wrapper">
+
+        <header class="header">
+
+            <div class="header-title">
+                <h1>Literary Lions</h1>
+            </div>
+
+            <div class="header-content">
+
+                <!-- Menu Button inside header -->
+                <form method="GET" action="/" class="menu-form">
+                    {{if .ShowTopics}}
+                    <input type="hidden" name="showTopics" value="false">
+                    <input class="menu_btn" title="Menu" type="image" src="/static/image/menu.png" alt="Hide Menu">
+                    {{else}}
+                    <input type="hidden" name="showTopics" value="true">
+                    <input class="menu_btn" title="Menu" type="image" src="/static/image/menu.png" alt="Menu">
+                    {{end}}
+                </form>
+
+                <div class="menu">
+                    <ul>
+                        <li><a href="/topic" class="border-aqua">FORUM</a></li>
+                        <li><a href="/topic?filter=latest" class="border-coral">NEW</a></li>
+                        <li><a href="/topic?filter=views">POPULAR</a></li>
+                    </ul>
+                </div>
+
+                <div class="userinfo">
+
+                    {{ if .Username}}
+                    <p>{{ .Username }}</p>
+
+                    {{ else }}
+                    <p>Not logged in</p>
+
+                    {{end}}
+
+                </div>
+
+                <div class="login">
+                    {{ if .Username}}
+                    <form action="/gotoprofile" method="POST">
+                        <button type="submit" class="login-btn">
+                            <img src="/static/image/lion_profile.jpg" alt="login">
+
+                        </button>
+                    </form>
+
+                    {{ else }}
+                    <form action="/gotoregister" method="POST">
+                        <button type="submit" class="login-btn">
+                            <img src="/static/image/lion_profile.jpg" alt="login">
+                            <!-- <p><b>User</b></p> -->
+
+                        </button>
+                    </form>
+                    {{end}}
+                </div>
+
+                {{ if .Username}}
+                <div class="login">
+                    <form action="/logout" method="POST">
+                        <button type="submit" class="login-btn">
+                            <img src="/static/image/logout.png" alt="login">
+                            <!-- <p><b>User</b></p> -->
+
+                        </button>
+                    </form>
+                </div>
+                {{ end }}
+
+
+                <form class="search-form" method="GET" action="/search">
+                    <input type="text" name="query" placeholder="Search..." required>
+                    <button type="submit" class="search-btn">
+                        <img src="/static/image/search.png" alt="Search">
+                    </button>
+                </form>
+            </div>
+        </header>
+
+        {{if .ShowTopics}}
+        <aside class="side-menu">
+
+            <!-- Menu content on the left side -->
+            <div id="topicsList">
+                <p><a class="link-button" href="/topic?topic=Fiction">🪄&emsp;Fiction</a></p>
+                <p><a class="link-button" href="/topic?topic=Crime/Thriller">🔪&emsp;Crime/Thriller</a></p>
+                <p><a class="link-button" href="/topic?topic=Science Fiction">👽&emsp;Science Fiction</a></p>
+                <p><a class="link-button" href="/topic?topic=Fantasy">🧙‍♂️&emsp;Fantasy</a></p>
+                <p><a class="link-button" href="/topic?topic=Historical Fiction">🏰&emsp;Historical Fiction</a></p>
+                <p><a class="link-button" href="/topic?topic=Romantic Fiction">💖&emsp;Romantic Fiction</a></p>
+                <p><a class="link-button" href="/topic?topic=Poetry">🎭&emsp;Poetry</a></p>
+                <p><a class="link-button" href="/topic?topic=Non-fiction">📚&emsp;Non-fiction</a></p>
+                <p><a class="link-button" href="/topic?topic=Other">❓&emsp;Other</a></p>
+            </div>
+
+        </aside>
+        {{end}}
+
+        <aside class="new-menu mobile-menu">
+
+            <!-- Menu content on the left side -->
+            <div>
+                <p><a href="/topic" class="border-aqua">FORUM</a></p>
+                <p><a href="/topic?filter=latest" class="border-coral">NEW</a></p>
+                <p><a href="/topic?filter=views">POPULAR</a></p>
+            </div>
+
+        </aside>
+
+
+
+        <main>
+            <div class="grid-container">
+                <div class="item2">
+                    <div class="scrollable-container">
+                        <div class="lalala">
+                            <div class="lalala-item">
+
+                                <p>The lions, with regal manes, prowl through faded manuscripts, weaving through words
+                                    like
+                                    ships on the sea.</p>
+                                <p>Under ancient lamps, their shadows stretch, and claws trace lines of ink
+                                    with reverence, uncovering histories, mysteries, and dreams.</p>
+                                <p>In quiet chambers, they find solace in forgotten tales, capturing the essence of
+                                    humanity.
+                                </p>
+                                <p>Satiated, they rest on beds of parchment and ink, their dreams now intertwined with
+                                    the
+                                    words
+                                    they've claimed, forever
+                                    guardians of knowledge and lore.</p>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="cat-section">
+
+                        <div class="cat-cards-container">
+                            {{range .Topics}}
+                            <a href="/topic?topic={{.}}" class="cat-card-link">
+                                <div class="cat-card indexback">
+                                    <div class="cat-card-text">
+                                        <h3>{{.}}</h3>
+                                    </div>
+                                </div>
+                            </a>
+                            {{end}}
+                        </div>
+                    </div>
+                </div>
+                <div class="item4">
+
+                </div>
+            </div>
+
+        </main>
+
+
+    </div>
+
+</body>
+
+{{block "footer" .}}{{end}}
+
+</html>

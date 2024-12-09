@@ -1,0 +1,101 @@
+.asdf {
+    margin-top: 200px;
+    background-color: rgb(248, 249, 246);
+    box-sizing: border-box;
+    margin: 1%;
+    /* border-radius: 15px; */
+    /* Округление углов */
+    overflow: hidden;
+    border: 2px solid #ccc;
+    /* Рамка */
+    text-align: left;
+    opacity: 0.95;
+}
+
+.asdf table {
+    width: 100%;
+    border-collapse: collapse;
+    /* Remove space between cells */
+}
+
+.asdf th,
+.asdf td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    /* Adds a border to the bottom of cells */
+    max-width: 200px;
+    /* Set the maximum width of the cell */
+    overflow: hidden;
+    /* Hide the overflow */
+    text-overflow: ellipsis;
+    /* Display '...' to indicate text overflow */
+    white-space: nowrap;
+    /* Prevent the text from wrapping to the next line */
+}
+
+.asdf th {
+    background-color: #f2f2f2;
+    /* Optional: Add background color to header */
+}
+
+.asdf td[colspan="4"] {
+    text-align: left;
+    padding: 20px;
+    color: #888;
+    /* Optional: Style the "No posts to show..." message */
+}
+
+.comment {
+    background-color: antiquewhite;
+    margin-right: 20%;
+}
+
+.comment-date {
+    text-align: right;
+    justify-content: right;
+
+}
+
+.like {
+    justify-content: right;
+    border: 3px solid transparent;
+}
+
+.replies {
+    background-color: antiquewhite;
+    margin-top: 10px;
+    margin-left: 50%;
+    /* Отступ слева для вложенных ответов */
+    border: 1px solid #ccc;
+    /* Цвет и толщина рамки */
+    border-radius: 10px;
+    /* Закругленные углы */
+}
+
+.reply {
+    margin-top: 5px;
+    padding-left: 15px;
+    border-left: 2px solid #ccc;
+}
+
+.toggle-replies-btn {
+    background-color: antiquewhite;
+    color: black;
+    border: none;
+    padding: 2px 5px;
+    /* Уменьшаем padding */
+    line-height: 1;
+    /* Снижаем высоту строки */
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.toggle-replies-btn:hover {
+    background-color: antiquewhite;
+}
+
+.hidden {
+    display: none;
+}

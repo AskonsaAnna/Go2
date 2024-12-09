@@ -1,0 +1,2 @@
+ALTER TABLE comments
+ADD COLUMN comment_id INTEGER NULL;

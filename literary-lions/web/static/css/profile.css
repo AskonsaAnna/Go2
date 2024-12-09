@@ -1,0 +1,215 @@
+body,
+html {
+    background: url('/static/image/leo4.jpg') no-repeat center fixed;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+
+    font-family: Arial, sans-serif;
+
+    background-position: center 35%;
+    background-size: cover;
+
+}
+
+/* Основные стили для таблицы профиля */
+.profiletable {
+
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0px 0;
+    font-size: 1rem;
+    text-align: left;
+    color: #333;
+}
+
+.profiletable td,
+.profiletable th {
+    padding: 12px 15px;
+}
+
+.profiletable tr {
+    border-bottom: 1px solid #ddd;
+}
+
+.profiletable tr:last-child {
+    border-bottom: 2px solid rgba(212, 251, 193, 0.713);
+    /* Нижняя граница таблицы */
+}
+
+.profiletable td {
+    font-weight: 400;
+}
+
+.profiletable th {
+    font-weight: bold;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+.profiletable tr:hover {
+    background-color: rgba(212, 251, 193, 0.2);
+    /* 0.5 — это 50% прозрачности */
+    /* Эффект при наведении */
+}
+
+/* Кнопки "Edit" и "Save" */
+.profiletable button {
+    background-color: rgba(212, 251, 193, 0.713);
+    text-shadow:
+        1px 1px 0 #333333c2,
+        /* Первичная тень ближе к тексту */
+        2px 2px 0 #333333c2,
+        /* Вторая тень дальше */
+    ;
+
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.profiletable button:hover {
+    background-color: rgba(177, 237, 12, 0.3);
+    text-shadow:
+        1px 1px 0 #333333c2,
+        /* Первичная тень ближе к тексту */
+        2px 2px 0 #333333c2,
+        /* Вторая тень дальше */
+
+}
+
+/* Формы для редактирования */
+.profiletable form {
+    display: inline;
+}
+
+.profiletable input[type="email"],
+.profiletable input[type="password"] {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+}
+
+.profiletable input[type="email"]:focus,
+.profiletable input[type="password"]:focus {
+    outline: none;
+    border-color: rgba(14, 115, 231, 0.868);
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
+}
+
+/* Общие стили для карточек */
+.card {
+
+    background-color: rgba(255, 255, 255, 0.5);
+    /* 0.5 — это 50% прозрачности */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 6em auto;
+    max-width: 800px;
+    width: 100%;
+    padding: 10px;
+}
+
+.text {
+    color: rgba(212, 251, 193, 0.713);
+    font-size: 21px;
+    /* Можно варьировать размер */
+    font-weight: bold;
+    /* Объем лучше смотрится на более жирном шрифте */
+    text-shadow:
+        1px 1px 0 #333333c2,
+        /* Первичная тень ближе к тексту */
+        2px 2px 0 #333333c2,
+        /* Вторая тень дальше */
+        3px 3px 2px rgba(0, 0, 0, 0.6),
+        /* Третья тень для глубины */
+        4px 4px 2px rgba(0, 0, 0, 0.5);
+    /* Четвертая тень для более плавного перехода */
+
+}
+
+.card-item h2 {
+    color: rgba(212, 251, 193, 0.713);
+    font-size: 36px;
+    /* Можно варьировать размер */
+    font-weight: bold;
+    /* Объем лучше смотрится на более жирном шрифте */
+    text-shadow:
+        1px 1px 0 #333333c2,
+        /* Первичная тень ближе к тексту */
+        2px 2px 0 #333333c2,
+        /* Вторая тень дальше */
+        3px 3px 2px rgba(0, 0, 0, 0.6),
+        /* Третья тень для глубины */
+        4px 4px 2px rgba(0, 0, 0, 0.5);
+    /* Четвертая тень для более плавного перехода */
+
+}
+
+.scrollable-container {
+    max-width: 80%;
+    min-width: 80%;
+    position: fixed;
+    margin: 3em auto;
+
+    /* Горизонтальная прокрутка для малых экранов */
+}
+
+.error-message {
+    color: red;
+    font-weight: bolder;
+}
+
+/* Мобильные стили */
+@media (max-width: 600px) {
+
+    .profiletable td,
+    .profiletable th {
+        padding: 8px 10px;
+    }
+
+    .card-item h2 {
+        font-size: 1.2rem;
+    }
+
+    .profiletable button {
+        padding: 6px 10px;
+    }
+
+    .mobile-menu.active {
+        display: block;
+        align-items: end;
+        /* Показываем мобильное меню при активации */
+    }
+
+    .profiletable {
+        width: 100%;
+
+        margin: 0px 0;
+        font-size: 1rem;
+        text-align: left;
+        color: #333;
+    }
+
+    .scrollable-container {
+        margin-left: 7%;
+
+
+        position: fixed;
+    }
+
+
+
+
+}
+
+.lion-footer {
+    display: block;
+    position: fixed;
+}
