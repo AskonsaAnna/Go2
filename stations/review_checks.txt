@@ -1,0 +1,34 @@
+*1. It displays "Error" on stderr when duplicate routes exist between two stations, including in reverse.
+-2. It finds more than one valid route for 3 trains between waterloo and st_pancras in the London Network Map
+-3. It displays "Error" on stderr when too many command line arguments are used.
+-4. It displays "Error" on stderr when the map does not contain a "connections:" section.
+5. It completes the movements in no more than 6 turns for 9 trains between beethoven and part
+*6. It displays "Error" on stderr when station names are duplicated.
+-7. It displays "Error" on stderr when too few command line arguments are used.
+-8. It displays "Error" on stderr when the start station does not exist.
+-9. It displays "Error" on stderr when the end station does not exist.
+10. It prints the train movements with the correct format "T1-station", "T2-station" etc.
+*11. It displays "Error" on stderr when a connection is made with a station which does not exist.
+-12. It displays "Error" on stderr when the map does not contain a "stations:" section.
+*13. It displays "Error" on stderr when any of the coordinates are not valid positive integers.
+14. It completes the movements in no more than 8 turns for 9 trains between small and large
+15. It completes the movements in no more than 6 turns for 4 trains between two and four
+16. It completes the movements in no more than 8 turns for 10 trains between jungle and desert
+*17. It displays "Error" on stderr when the number of trains is not a valid positive integer.
+-18. It finds more than one valid route for 100 trains between waterloo and st_pancras in the London Network Map
+-19. It displays "Error" on stderr when station names are invalid.
+20. It completes the movements in no more than 6 turns for 4 trains between bond_square and space_port
+*21. It displays "Error" on stderr when two stations exist at the same coordinates.
+22. It works with additional tricky cases.
+23. It only moves trains in a valid fashion from beginning to end
+-24. It can find more than one route for 2 trains between waterloo and st_pancras for the London Network Map
+25. It completes the movements in no more than 11 turns for 20 trains between beginning and terminus
+-26. It finds only a single valid route for 1 train between waterloo and st_pancras in the London Network Map
+-27. It finds more than one valid route for 4 trains between waterloo and st_pancras in the London Network Map
+-28. It displays "Error" on stderr when the start and end station are the same.
+-29. It displays "Error" on stderr when no path exists between the start and end stations.
+*30. It displays "Error" on stderr when a map contains more than 10000 stations.
+
+legend:
+-in progress
+*comleted
